@@ -9,7 +9,7 @@ def extract_tables_from_pdf(pdf_path, target_headers):
             for table in tables:
                 if (
                     table
-                    and [c.strip() for c in table[0][: len(target_headers)]]
+                    and [c.strip() if c is not None else "" for c in table[0][: len(target_headers)]]
                     == target_headers
                 ):
                     for row in table[1:]:
